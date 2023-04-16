@@ -11,7 +11,7 @@
 
 
 : ${DEBUG:='N'}
-: ${LAUNCHER:='/usr/local/bin/firectl'}
+: ${LAUNCHER:='/usr/local/bin/firectl -m=256 -c=1'}
 : ${FIRECTL_KERNEL:='--kernel=/tmp/micro-vmlinux.bin'}
 : ${FIRECTL_KERNEL_OPTS:='--kernel-opts=console=ttyS0 noapic reboot=k panic=1 pci=off nomodules rw'}
 : ${FIRECTL_ROOT_DRIVE:='--root-drive=/rootfs/image'}

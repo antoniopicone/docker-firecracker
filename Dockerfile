@@ -1,4 +1,4 @@
-FROM golang:1.11.4-alpine3.8 as builder
+FROM golang:1.20.3-alpine3.17 as builder
 
 RUN apk --no-cache add curl git make build-base \
     && echo "Pulling firectl binary from Github." \
@@ -7,16 +7,16 @@ RUN apk --no-cache add curl git make build-base \
     && cp firectl /usr/bin/firectl \
     && apk del curl git make build-base --no-cache
 
-FROM alpine:3.8
-MAINTAINER Swarvanu Sengupta <swarvanusg@gmail.com>
+FROM alpine:3.17.3
+
 ENV container docker
 
 RUN apk add curl qemu-system-x86_64 libvirt \ 
     && apk add libvirt-daemon dbus polkit \
     && apk add qemu-img bash iproute2 e2fsprogs 
 
-RUN curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/v0.13.0/firecracker-v0.13.0 \
-    && mv firecracker-v0.13.0 /usr/local/bin/firecracker \
+RUN curl -LOJ https://github.com/firecracker-microvm/firecracker/releases/download/v1.3.1/firecracker-v1.3.1-x86_64.tgz \
+    && tar -xzf firecracker-v1.3.1-x86_64.tgz && mv release-v1.3.1-x86_64/firecracker-v1.3.1-x86_64 /usr/local/bin/firecracker \
     && chmod u+x /usr/local/bin/firecracker
 
 RUN curl -fsSL -o /tmp/micro-vmlinux.bin https://s3.amazonaws.com/spec.ccfc.min/img/hello/kernel/hello-vmlinux.bin

@@ -1,7 +1,7 @@
-FROM golang
+FROM golang:1.20.3-alpine3.17
 
 RUN cd /tmp && \ 
-    wget http://dl-cdn.alpinelinux.org/alpine/v3.8/releases/x86_64/alpine-minirootfs-3.8.1-x86_64.tar.gz
+    wget http://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-3.17.3-x86_64.tar.gz
 
 COPY inittab /tmp/overlay/etc/inittab
 COPY interfaces /tmp/overlay/etc/network/interfaces

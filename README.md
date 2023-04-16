@@ -26,5 +26,5 @@ docker run                                        \
       --privileged                                \
       -v /path_to/my_root_fs:/rootfs/image        \
       -p <port>:<port>                            \
-      s8sg/docker-firecracker
+      antoniopicone/docker-firecracker
 ```
