@@ -1,5 +1,5 @@
 FROM golang:1.20.3-alpine3.17
-
+RUN apk update && apk upgrade && apk add bash e2fsprogs
 RUN cd /tmp && \ 
     wget http://dl-cdn.alpinelinux.org/alpine/v3.17/releases/x86_64/alpine-minirootfs-3.17.3-x86_64.tar.gz
 

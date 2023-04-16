@@ -1,7 +1,6 @@
 FROM golang:1.20.3-alpine3.17 as builder
 
 RUN apk --no-cache add curl git make build-base \
-    && echo "Pulling firectl binary from Github." \
     && git clone https://github.com/firecracker-microvm/firectl \
     && cd firectl && make && chmod u+x firectl \
     && cp firectl /usr/bin/firectl \
